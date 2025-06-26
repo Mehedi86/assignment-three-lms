@@ -1,5 +1,6 @@
 import { Server } from "http"
 import { app } from "./app";
+import mongoose from "mongoose";
 
 
 let server: Server;
@@ -7,8 +8,12 @@ const PORT = 5000;
 
 async function main() {
     try {
-        server = app.listen(PORT, ()=>{
-console.log(`App is listening on port ${PORT}`)
+        await mongoose.connect('mongodb+srv://libraryManagement:zwsbdgFeEMRMdq8d@cluster0.kpht8.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0');
+
+        console.log('conneted to mongodb by mongoose!!')
+        
+        server = app.listen(PORT, () => {
+            console.log(`App is listening on port ${PORT}`)
         })
 
     } catch (error) {
@@ -18,4 +23,7 @@ console.log(`App is listening on port ${PORT}`)
 
 main()
 
-// mongodb + srv://<db_username>:<db_password>@cluster0.kpht8.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+
+// zwsbdgFeEMRMdq8d
+// libraryManagement
+
