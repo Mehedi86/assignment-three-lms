@@ -57,3 +57,15 @@ bookRoutes.put('/:bookId', async (req: Request, res: Response) => {
         data: updateNew
     })
 })
+
+// api for delete book
+bookRoutes.delete('/:bookId', async (req: Request, res: Response) => {
+    const bookId = req.params.bookId;
+    const book = await Book.findByIdAndDelete(bookId);
+
+    res.json({
+        success: true,
+        message: "Book deleted successfully",
+        data: book
+    })
+})
